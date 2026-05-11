@@ -59,7 +59,7 @@ export default async function DashboardPage() {
     .order("spent_on", { ascending: false })
     .order("created_at", { ascending: false })
     .limit(5);
-  const recent = (recentData ?? []) as ExpenseRecordWithRelations[];
+  const recent = (recentData ?? []) as unknown as ExpenseRecordWithRelations[];
 
   return (
     <div className="space-y-6">

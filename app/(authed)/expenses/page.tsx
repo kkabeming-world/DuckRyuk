@@ -24,7 +24,7 @@ export default async function ExpensesPage({
     .select("artist_id, is_primary, artists(id, slug, name_ko, name_en)")
     .eq("user_id", user.id)
     .order("is_primary", { ascending: false });
-  const fandoms = (fandomsData ?? []) as FandomWithArtist[];
+  const fandoms = (fandomsData ?? []) as unknown as FandomWithArtist[];
 
   const currentMonth = formatYearMonth(new Date());
   const activeMonth = sp.month ?? currentMonth;
@@ -47,7 +47,7 @@ export default async function ExpensesPage({
   }
 
   const { data: recordsData } = await query;
-  const records = (recordsData ?? []) as ExpenseRecordWithRelations[];
+  const records = (recordsData ?? []) as unknown as ExpenseRecordWithRelations[];
   const totalAmount = records.reduce((s, r) => s + Number(r.amount), 0);
 
   return (

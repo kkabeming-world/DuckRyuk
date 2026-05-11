@@ -34,7 +34,7 @@ export default async function EditExpensePage({ params, searchParams }: Props) {
     .select("artist_id, is_primary, artists(id, slug, name_ko, name_en)")
     .eq("user_id", user.id)
     .order("is_primary", { ascending: false });
-  const fandoms = (fandomsData ?? []) as FandomWithArtist[];
+  const fandoms = (fandomsData ?? []) as unknown as FandomWithArtist[];
 
   const { data: categoriesData } = await supabase
     .from("expense_categories")

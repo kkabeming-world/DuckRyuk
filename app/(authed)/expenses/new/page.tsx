@@ -24,7 +24,7 @@ export default async function NewExpensePage({
     .select("artist_id, is_primary, artists(id, slug, name_ko, name_en)")
     .eq("user_id", user.id)
     .order("is_primary", { ascending: false });
-  const fandoms = (fandomsData ?? []) as FandomWithArtist[];
+  const fandoms = (fandomsData ?? []) as unknown as FandomWithArtist[];
 
   if (fandoms.length === 0) {
     redirect("/onboarding");
