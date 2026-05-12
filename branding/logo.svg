@@ -1,0 +1,18 @@
+<svg width="1200" height="360" viewBox="0 0 1200 360" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="360" rx="48" fill="white"/>
+  <g transform="translate(48 48)">
+    <rect x="0" y="0" width="264" height="264" rx="72" fill="#FFF1F4"/>
+    <rect x="30" y="30" width="204" height="204" rx="56" fill="#FF3F65"/>
+    <rect x="52" y="52" width="160" height="160" rx="40" fill="white" opacity="0.18"/>
+    <path d="M95 121C95 94.4903 116.49 73 143 73C158.318 73 172.23 80.1357 181 91.2698C189.77 80.1357 203.682 73 219 73C245.51 73 267 94.4903 267 121C267 191.149 181 237 181 237C181 237 95 191.149 95 121Z" transform="translate(-40 8) scale(0.85)" fill="white"/>
+    <path d="M168 84L176.092 108.908H202.278L181.093 124.284L189.185 149.192L168 133.816L146.815 149.192L154.907 124.284L133.722 108.908H159.908L168 84Z" fill="#FFD7DF"/>
+    <path d="M77 187C113.582 164.713 149.035 153.569 183.357 153.569C199.63 153.569 216.646 156.076 234.405 161.089" stroke="#BF1644" stroke-width="16" stroke-linecap="round"/>
+    <circle cx="80" cy="186" r="14" fill="#BF1644"/>
+    <circle cx="235" cy="161" r="14" fill="#BF1644"/>
+  </g>
+  <g transform="translate(356 0)">
+    <text x="0" y="178" fill="#1A0610" font-family="Pretendard, Noto Sans KR, Apple SD Gothic Neo, Malgun Gothic, sans-serif" font-size="136" font-weight="900" letter-spacing="-8">덕력</text>
+    <text x="4" y="236" fill="#BF1644" font-family="Pretendard, Noto Sans KR, Apple SD Gothic Neo, Malgun Gothic, sans-serif" font-size="34" font-weight="800" letter-spacing="1.5">기록하고 · 자랑하고 · 거래한다</text>
+    <text x="4" y="282" fill="#7C2740" font-family="Pretendard, Noto Sans KR, Apple SD Gothic Neo, Malgun Gothic, sans-serif" font-size="24" font-weight="600">K-pop 팬을 위한 덕질 기록 서비스</text>
+  </g>
+</svg>

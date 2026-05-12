@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
 import { env } from "@/lib/env";
@@ -13,11 +14,8 @@ export default async function Home() {
   return (
     <main className="mx-auto flex min-h-screen max-w-md flex-col px-6 py-16">
       <div className="mb-12 text-center">
-        <p className="mb-2 text-xs font-semibold tracking-widest text-duck-500">
-          기록하고 → 자랑하고 → 거래한다
-        </p>
-        <h1 className="text-5xl font-black tracking-tight">덕력</h1>
-        <p className="mt-4 text-sm text-duck-900/70">
+        <Image src="/logo.svg" alt="덕력 로고" width={420} height={126} className="mx-auto mb-4 h-auto w-full max-w-[420px]" priority />
+        <p className="text-sm text-duck-900/70">
           K-pop 팬을 위한 덕질 기록 + 카드 자랑 + 굿즈 인벤토리
         </p>
       </div>

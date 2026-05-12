@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import type { Profile } from "@/lib/types";
 
@@ -9,8 +10,9 @@ export default function Topbar({ profile }: Props) {
   return (
     <header className="sticky top-0 z-10 border-b border-duck-100 bg-white/90 backdrop-blur">
       <nav className="mx-auto flex max-w-2xl items-center justify-between px-4 py-3">
-        <Link href="/dashboard" className="text-lg font-black tracking-tight text-duck-700">
-          덕력
+        <Link href="/dashboard" className="flex items-center gap-2">
+          <Image src="/favicon.svg" alt="덕력" width={32} height={32} className="h-8 w-8" />
+          <span className="text-lg font-black tracking-tight text-duck-700">덕력</span>
         </Link>
         <div className="flex items-center gap-1">
           <Link href="/expenses/new" className="btn-ghost text-xs">
