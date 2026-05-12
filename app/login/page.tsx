@@ -18,7 +18,11 @@ export default async function LoginPage({
     const password = String(formData.get("password") ?? "");
     const { error } = await supabase.auth.signInWithPassword({ email, password });
     if (error) {
-      redirect(`/login?error=${encodeURIComponent(error.message)}&redirect=${encodeURIComponent(sp.redirect ?? "")}`);
+      const msg = error.message ?? "";
+      if (/email\s*not\s*confirmed/i.test(msg) || (error as { code?: string }).code === "email_not_confirmed") {
+        redirect(`/auth/verify-pending?email=${encodeURIComponent(email)}`);
+      }
+      redirect(`/login?error=${encodeURIComponent(msg)}&redirect=${encodeURIComponent(sp.redirect ?? "")}`);
     }
     redirect(sp.redirect && sp.redirect.startsWith("/") ? sp.redirect : "/dashboard");
   }
