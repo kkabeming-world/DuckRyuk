@@ -1,0 +1,128 @@
+<!--
+  Supabase Auth — Confirm signup
+  Where to paste:
+    Supabase Dashboard → Authentication → Email Templates → "Confirm signup"
+    Subject 예: "덕력에 오신 걸 환영해요 🎴 이메일만 확인하면 시작이에요"
+
+  Supabase 변수:
+    {{ .ConfirmationURL }} — confirm 링크 (필수)
+    {{ .Email }}           — 사용자 이메일
+    {{ .SiteURL }}         — Site URL
+-->
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>덕력 가입 확인</title>
+  </head>
+  <body style="margin:0;padding:0;background:#fff8d6;font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Pretendard','Noto Sans KR',sans-serif;color:#1a1a1a;-webkit-font-smoothing:antialiased;">
+    <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="background:#fff8d6;">
+      <tr>
+        <td align="center" style="padding:40px 16px;">
+          <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="max-width:560px;background:#ffffff;border-radius:24px;box-shadow:0 8px 32px rgba(0,0,0,0.06);overflow:hidden;">
+
+            <!-- header -->
+            <tr>
+              <td style="padding:40px 36px 12px;text-align:center;">
+                <p style="margin:0 0 10px;font-size:11px;letter-spacing:0.22em;color:#b89800;font-weight:700;text-transform:uppercase;">
+                  기록하고 → 자랑하고 → 거래한다
+                </p>
+                <h1 style="margin:0;font-size:44px;font-weight:900;letter-spacing:-0.02em;color:#1a1a1a;">
+                  덕력
+                </h1>
+              </td>
+            </tr>
+
+            <!-- body -->
+            <tr>
+              <td style="padding:24px 36px 8px;text-align:center;">
+                <p style="margin:0 0 12px;font-size:22px;line-height:1.45;font-weight:800;color:#1a1a1a;">
+                  반가워요! 🎴
+                </p>
+                <p style="margin:0;font-size:15px;line-height:1.75;color:#3a3a3a;">
+                  아래 버튼을 한 번만 눌러주면 가입이 완료돼요.<br />
+                  완료되면 바로 오늘의 덕력부터 기록할 수 있어요.
+                </p>
+              </td>
+            </tr>
+
+            <!-- CTA -->
+            <tr>
+              <td style="padding:30px 36px 8px;text-align:center;">
+                <a href="{{ .ConfirmationURL }}"
+                   style="display:inline-block;padding:16px 44px;background:#ffd400;color:#1a1a1a;font-size:16px;font-weight:800;text-decoration:none;border-radius:14px;box-shadow:0 6px 18px rgba(255,212,0,0.45);">
+                  이메일 확인하고 시작하기
+                </a>
+              </td>
+            </tr>
+
+            <!-- fallback link -->
+            <tr>
+              <td style="padding:6px 36px 28px;text-align:center;">
+                <p style="margin:0 0 6px;font-size:12px;color:#8a7d00;">
+                  버튼이 안 보이면 아래 링크를 복사해서 브라우저에 붙여넣어주세요.
+                </p>
+                <p style="margin:0;font-size:11px;color:#9a8800;word-break:break-all;line-height:1.5;">
+                  {{ .ConfirmationURL }}
+                </p>
+              </td>
+            </tr>
+
+            <!-- divider -->
+            <tr>
+              <td style="padding:0 36px;">
+                <div style="height:1px;background:#f0e6a0;"></div>
+              </td>
+            </tr>
+
+            <!-- what's next -->
+            <tr>
+              <td style="padding:24px 36px 8px;">
+                <p style="margin:0 0 10px;font-size:13px;font-weight:700;color:#1a1a1a;">
+                  가입하면 이런 게 가능해요
+                </p>
+                <ul style="margin:0;padding:0 0 0 18px;font-size:13px;line-height:1.85;color:#3a3a3a;">
+                  <li>📒 굿즈·콘서트·앨범 지출을 카테고리별로 자동 합산</li>
+                  <li>🎴 내 덕력을 카드 이미지로 자랑 (트위터/인스타 공유 최적화)</li>
+                  <li>🏆 아이돌별 팬 덕력 랭킹에서 내 자리 확인</li>
+                  <li>🧸 구매한 굿즈를 자동으로 인벤토리에 정리</li>
+                </ul>
+              </td>
+            </tr>
+
+            <!-- security note -->
+            <tr>
+              <td style="padding:20px 36px 28px;">
+                <p style="margin:0;font-size:12px;color:#777;line-height:1.7;">
+                  혹시 본인이 가입한 게 아니라면 이 메일은 그냥 무시해주세요. 아무 일도 일어나지 않아요.
+                </p>
+              </td>
+            </tr>
+
+            <!-- footer band -->
+            <tr>
+              <td style="padding:18px 36px;background:#fffce0;text-align:center;">
+                <p style="margin:0;font-size:12px;color:#7a6a00;letter-spacing:0.04em;">
+                  #나의덕력 · #덕력인증
+                </p>
+              </td>
+            </tr>
+          </table>
+
+          <!-- bottom meta -->
+          <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="max-width:560px;margin-top:18px;">
+            <tr>
+              <td style="text-align:center;padding:0 16px;">
+                <p style="margin:0;font-size:11px;color:#9a8800;line-height:1.6;">
+                  덕력 — 덕질을 숫자로<br />
+                  본 메일은 {{ .Email }} 로 발송되었어요.
+                </p>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>
