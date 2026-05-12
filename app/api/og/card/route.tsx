@@ -1,5 +1,6 @@
 import { ImageResponse } from "next/og";
 import { createAdminClient } from "@/lib/supabase/admin";
+import { buildBrandPalette, DEFAULT_BRAND_COLOR } from "@/lib/theme";
 
 export const runtime = "edge";
 
@@ -78,12 +79,19 @@ export async function GET(request: Request) {
 
   const { data: primaryFandom } = await supabase
     .from("fandoms")
-    .select("artists(name_ko)")
+    .select("artists(name_ko, primary_color, fandom_name)")
     .eq("user_id", profile.id)
     .eq("is_primary", true)
     .single();
-  const primaryArtistName =
-    (primaryFandom?.artists as unknown as { name_ko: string } | null)?.name_ko ?? null;
+  const primaryArtist =
+    (primaryFandom?.artists as unknown as {
+      name_ko: string;
+      primary_color: string | null;
+      fandom_name: string | null;
+    } | null) ?? null;
+  const primaryArtistName = primaryArtist?.name_ko ?? null;
+  const primaryFandomName = primaryArtist?.fandom_name ?? null;
+  const palette = buildBrandPalette(primaryArtist?.primary_color ?? DEFAULT_BRAND_COLOR);
 
   const { data: totalsData } = await supabase
     .from("v_user_artist_total")
@@ -123,20 +131,21 @@ export async function GET(request: Request) {
         flexDirection: "column",
         width: "100%",
         height: "100%",
-        background: "linear-gradient(135deg, #fff8d6 0%, #ffe26b 100%)",
+        background: `linear-gradient(135deg, ${palette.brandLight} 0%, ${palette.brand} 100%)`,
         padding: "72px 80px",
         fontFamily: "sans-serif",
         justifyContent: "space-between",
+        color: palette.brandForeground,
       }}
     >
       <div style={{ display: "flex", flexDirection: "column" }}>
-        <span style={{ fontSize: 22, color: "#bf9200", fontWeight: 700 }}>덕력 카드</span>
-        <span style={{ fontSize: 60, fontWeight: 900, color: "#3d2c00", marginTop: 12 }}>
+        <span style={{ fontSize: 22, fontWeight: 700, opacity: 0.85 }}>덕력 카드</span>
+        <span style={{ fontSize: 60, fontWeight: 900, marginTop: 12 }}>
           {displayName}
         </span>
         {primaryArtistName && (
-          <span style={{ fontSize: 26, color: "#7a5e00", marginTop: 8 }}>
-            {primaryArtistName} 팬
+          <span style={{ fontSize: 26, marginTop: 8, opacity: 0.9 }}>
+            {primaryFandomName ? `${primaryArtistName} · ${primaryFandomName}` : `${primaryArtistName} 팬`}
           </span>
         )}
       </div>
@@ -145,22 +154,23 @@ export async function GET(request: Request) {
         style={{
           display: "flex",
           flexDirection: "column",
-          background: "rgba(255,255,255,0.65)",
+          background: "rgba(255,255,255,0.85)",
           borderRadius: 24,
           padding: "32px 40px",
+          color: "#1a0610",
         }}
       >
-        <span style={{ fontSize: 18, color: "#7a5e00" }}>총 덕력</span>
-        <span style={{ fontSize: 72, fontWeight: 900, color: "#bf1644", lineHeight: 1.1 }}>
+        <span style={{ fontSize: 18, opacity: 0.7 }}>총 덕력</span>
+        <span style={{ fontSize: 72, fontWeight: 900, color: palette.brandDark, lineHeight: 1.1 }}>
           {totalText}
         </span>
         {periodText && (
-          <span style={{ fontSize: 18, color: "#7a5e00", marginTop: 8 }}>{periodText}</span>
+          <span style={{ fontSize: 18, opacity: 0.7, marginTop: 8 }}>{periodText}</span>
         )}
       </div>
 
       <div style={{ display: "flex", justifyContent: "flex-end" }}>
-        <span style={{ fontSize: 22, color: "#bf9200", fontWeight: 700 }}>#나의덕력</span>
+        <span style={{ fontSize: 22, fontWeight: 700, opacity: 0.85 }}>#나의덕력</span>
       </div>
     </div>,
     {

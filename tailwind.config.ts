@@ -20,6 +20,12 @@ const config: Config = {
           800: "#931135",
           900: "#660925",
         },
+        brand: {
+          DEFAULT: "var(--brand)",
+          light: "var(--brand-light)",
+          dark: "var(--brand-dark)",
+          fg: "var(--brand-foreground)",
+        },
       },
       fontFamily: {
         sans: ["Pretendard", "ui-sans-serif", "system-ui", "sans-serif"],

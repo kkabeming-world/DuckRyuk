@@ -5,6 +5,12 @@
 :root {
   --background: #fff8f7;
   --foreground: #1a0610;
+
+  /* 아티스트 키컬러. fallback은 duck-500 톤. (authed) 진입 시 SSR로 덮어쓴다. */
+  --brand: #ff3f65;
+  --brand-light: #ffe9ec;
+  --brand-dark: #bf1644;
+  --brand-foreground: #ffffff;
 }
 
 html,

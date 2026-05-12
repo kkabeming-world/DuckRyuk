@@ -64,19 +64,19 @@ export default async function DashboardPage() {
   return (
     <div className="space-y-6">
       <div>
-        <p className="text-sm font-semibold text-duck-500">안녕하세요,</p>
+        <p className="text-sm font-semibold text-brand">안녕하세요,</p>
         <h1 className="text-2xl font-black">{profile?.nickname ?? "팬"} 님 👋</h1>
       </div>
 
       {/* Total stats card */}
       <div className="card">
         <p className="mb-1 text-xs text-duck-900/60">나의 총 덕력</p>
-        <p className="text-3xl font-black text-duck-700">{formatKrw(totalAmount)}</p>
+        <p className="text-3xl font-black text-brand-dark">{formatKrw(totalAmount)}</p>
         <p className="mt-1 text-xs text-duck-900/50">총 {recordCount}건</p>
         {primaryFandom && primaryTotal !== null && (
           <div className="mt-3 border-t border-duck-100 pt-3">
             <p className="text-xs text-duck-900/60">{primaryFandom.artists?.name_ko} 덕력</p>
-            <p className="text-xl font-bold text-duck-600">{formatKrw(primaryTotal)}</p>
+            <p className="text-xl font-bold text-brand">{formatKrw(primaryTotal)}</p>
           </div>
         )}
       </div>
