@@ -9,6 +9,8 @@ export type Profile = {
   updated_at: string;
 };
 
+export type ArtistStatus = 'active' | 'hiatus' | 'disbanded';
+
 export type Artist = {
   id: string;
   slug: string;
@@ -17,11 +19,20 @@ export type Artist = {
   agency: string | null;
   kind: 'group' | 'solo';
   debut_year: number | null;
+  debut_date: string | null;
   image_url: string | null;
+  fandom_name: string | null;
+  primary_color: string | null;
+  secondary_color: string | null;
+  status: ArtistStatus;
   created_at: string;
 };
 
 export type ArtistBasic = Pick<Artist, 'id' | 'slug' | 'name_ko' | 'name_en'>;
+export type ArtistWithTheme = Pick<
+  Artist,
+  'id' | 'slug' | 'name_ko' | 'name_en' | 'fandom_name' | 'primary_color' | 'secondary_color'
+>;
 
 export type Fandom = {
   id: string;
@@ -105,6 +116,9 @@ export type UserArtistMonthly = {
 
 export type ArtistRankingRow = {
   artist_id: string;
+  artist_name_ko: string;
+  artist_fandom_name: string | null;
+  artist_primary_color: string | null;
   user_id: string;
   nickname: string;
   handle: string | null;
